@@ -1,0 +1,3157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Responsive Navbar</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+<!-- Font Awesome CDN -->
+<link rel="stylesheet" 
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{font-family:Poppins,sans-serif}
+
+html {
+  scroll-behavior: smooth;
+}
+/* NAVBAR */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: #ffffffcc;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* LOGO */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo img { width: 70px; }
+
+.brand { font-weight: 800; color: #E8681A; font-size: 18px; }
+.sub { font-size: 10px; color: #666; }
+
+/* MENU */
+.nav-links {
+  display: flex;
+  gap: 28px;
+  list-style: none;
+}
+
+.nav-links a {
+  position: relative;
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  padding: 6px 0;
+  transition: color 0.3s ease;
+}
+
+/* COLOR CHANGE */
+.nav-links a:hover {
+  color: #E8681A;
+}
+
+/* ANIMATED UNDERLINE */
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0%;
+  height: 2px;
+  background: linear-gradient(90deg, #ff7a2f, #E8681A);
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* BUTTON */
+.nav-btn {
+  background: #E8681A;
+  color: #fff;
+  padding: 10px 18px;
+  border-radius: 8px;
+  text-decoration: none;
+}
+
+/* HAMBURGER */
+.menu-toggle {
+  display: none;
+  font-size: 26px;
+  cursor: pointer;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background: white;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 20px 0;
+    display: none;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .nav-btn {
+    display: none;
+  }
+}
+
+
+/* HERO SECTION */
+.hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 80px 60px;
+  min-height: 90vh;
+  background: linear-gradient(135deg,#f0fffe,#eef6ff,#f8f3ff);
+  overflow: hidden;
+  flex-wrap: wrap;
+}
+
+/* LEFT CONTENT */
+.hero-content {
+  max-width: 480px;
+  z-index: 2;
+  transform: translateX(20px); /* slightly more visible */
+}
+
+.hero h1 {
+  font-size: 52px;
+  font-weight: 900;
+  line-height: 1.2;
+  color: #1a2340;
+}
+
+.hero span {
+  color: #3BAD4F;
+}
+
+.hero p {
+  margin: 20px 0 30px;
+  font-size: 17px;
+  color: #555;
+  line-height: 1.6;
+}
+.hero-image {
+  max-width: 600px;
+  width: 100%;
+  transform: translateX(-20px); /* pulls image toward text */
+}
+/* BUTTON */
+.hero-btn {
+  display: inline-block;
+  padding: 14px 30px;
+  background: linear-gradient(135deg,#ff7a2f,#E8681A);
+  color: #fff;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.hero-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(232,104,26,0.3);
+}
+
+/* IMAGE */
+.hero-image {
+  max-width: 600px;
+  width: 100%;
+}
+
+.hero-image img {
+  width: 100%;
+  border-radius: 20px;
+}
+
+/* SOFT OVERLAY EFFECT */
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 60%;
+  height: 100%;
+  background: radial-gradient(circle at top right, rgba(232,104,26,0.15), transparent);
+  z-index: 1;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+
+  .hero {
+    flex-direction: column;
+    padding: 60px 20px;
+    text-align: center;
+  }
+
+  .hero h1 {
+    font-size: 34px;
+  }
+
+  .hero-image {
+    margin-top: 30px;
+  }
+}
+
+/* about */
+.about {
+  padding: 80px 60px;
+  background: #f9fbff;
+  overflow: hidden;
+}
+
+.about-container {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+  flex-wrap: wrap;
+}
+
+/* TEXT */
+.about-text {
+  flex: 1;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: 0.8s ease;
+}
+
+.about-text h2 {
+  font-size: 38px;
+  margin-bottom: 20px;
+  color: #1a2340;
+}
+
+.about-text p {
+  margin-bottom: 15px;
+  color: #555;
+  line-height: 1.6;
+}
+
+.about-text li {
+  margin-bottom: 10px;
+}
+
+.about-btn {
+  margin-top: 20px;
+  padding: 12px 25px;
+  border: none;
+  background: #f5a623;
+  color: white;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.about-btn:hover {
+  background: #e69500;
+}
+
+/* IMAGE DESIGN */
+.about-image {
+  flex: 1;
+  position: relative;
+}
+
+.image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 400px; /* important */
+}
+
+/* BACK IMAGE */
+.img1 {
+  width: 70%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 20px;
+  transform: rotate(-6deg);
+  z-index: 1;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+/* FRONT IMAGE */
+.img2 {
+  width: 70%;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  border-radius: 20px;
+  transform: rotate(6deg);
+  z-index: 2;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+/* BADGE FIX */
+.badge {
+  position: absolute;
+  top: 10px;
+  left: 40%;
+  z-index: 3;
+}
+/* FLOAT ANIMATION */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+/* ACTIVE ANIMATION */
+.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* MOBILE */
+/* ================= MOBILE FIX (FINAL) ================= */
+@media (max-width: 768px) {
+
+  /* NAVBAR */
+  .nav-container {
+    padding: 12px 16px;
+  }
+
+  .logo img {
+    width: 55px;
+  }
+
+  .nav-links {
+    top: 65px;
+    gap: 18px;
+  }
+
+  /* HERO SECTION */
+  .hero {
+    flex-direction: column;
+    padding: 50px 18px;
+    text-align: center;
+  }
+
+  .hero-content {
+    transform: none;
+    max-width: 100%;
+  }
+
+  .hero h1 {
+    font-size: 30px;
+  }
+
+  .hero p {
+    font-size: 15px;
+  }
+
+  .hero-btn {
+    padding: 12px 24px;
+  }
+
+  .hero-image {
+    margin-top: 25px;
+    transform: none;
+  }
+
+  .hero-image img {
+    border-radius: 15px;
+  }
+
+  /* ABOUT SECTION */
+  .about {
+    padding: 50px 18px;
+  }
+
+  .about-container {
+    flex-direction: column-reverse; /* text first */
+    gap: 30px;
+  }
+
+  .about-text {
+    text-align: center;
+    transform: none;
+  }
+
+  .about-text h2 {
+    font-size: 26px;
+  }
+
+  .about-text p {
+    font-size: 15px;
+  }
+
+  .about-text ul {
+    padding: 0;
+  }
+
+  .about-text li {
+    list-style: none;
+  }
+
+  .about-btn {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+
+  /* IMAGE SECTION */
+  .image-wrapper {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .img1, .img2 {
+    width: 100%;
+    position: relative;
+    transform: none !important;
+    animation: none; /* disable floating on mobile */
+  }
+
+  /* BADGE (visible + clean) */
+  .badge {
+    position: relative;
+    top: 0;
+    left: 0;
+    transform: none;
+    margin: 10px auto;
+    display: inline-block;
+    background: #f5a623;
+    color: #fff;
+    padding: 8px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+  }
+}
+/* FLOAT ANIMATIONS */
+@keyframes floatUp {
+  0% { transform: translateY(0) rotate(-6deg); }
+  50% { transform: translateY(-15px) rotate(-6deg); }
+  100% { transform: translateY(0) rotate(-6deg); }
+}
+
+@keyframes floatDown {
+  0% { transform: translateY(0) rotate(6deg); }
+  50% { transform: translateY(15px) rotate(6deg); }
+  100% { transform: translateY(0) rotate(6deg); }
+}
+
+/* APPLY ANIMATION */
+.img1 {
+  animation: floatUp 4s ease-in-out infinite;
+}
+
+.img2 {
+  animation: floatDown 4s ease-in-out infinite;
+  animation-delay: 1s; /* gives natural offset */
+}
+.services {
+  padding: 80px 60px;
+  background: #eaf2f8;
+}
+
+.services-container {
+  display: flex;
+  gap: 50px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+/* LEFT SIDE */
+.services-left {
+  flex: 1;
+  max-width: 350px;
+}
+
+.tag {
+  font-size: 14px;
+  color: #f5a623;
+  margin-bottom: 10px;
+}
+
+.services-left h2 {
+  font-size: 42px;
+  color: #1a2340;
+  margin-bottom: 20px;
+}
+
+.desc {
+  color: #555;
+  margin-bottom: 25px;
+  line-height: 1.6;
+}
+
+.service-btn {
+  display: inline-block;
+  padding: 12px 22px;
+  background:#f5a623;
+  color: white;
+  border-radius: 30px;
+  text-decoration: none;
+}
+
+/* RIGHT SIDE */
+.services-right {
+  flex: 2;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+/* SERVICE ITEMS */
+.service {
+  position: relative;
+  padding: 25px;
+  border-radius: 15px;
+  background: #f5f5f5;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+/* FILL EFFECT */
+.service::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #f5a623;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+  z-index: 0;
+}
+
+/* TEXT ABOVE */
+.service h3,
+.service p {
+  position: relative;
+  z-index: 1;
+  transition: color 0.3s ease;
+}
+
+.service h3 {
+  margin-bottom: 10px;
+  color: #1a2340;
+}
+
+.service p {
+  font-size: 14px;
+  color: #555;
+}
+
+/* HOVER EFFECT */
+.service:hover::before {
+  transform: scaleX(1);
+}
+
+.service:hover h3,
+.service:hover p {
+  color: #fff;
+}
+
+/* LIFT EFFECT */
+.service:hover {
+  transform: translateY(-5px);
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .services {
+    padding: 50px 20px;
+  }
+
+  .services-container {
+    flex-direction: column;
+  }
+
+  .services-right {
+    grid-template-columns: 1fr;
+  }
+
+  .services-left h2 {
+    font-size: 28px;
+  }
+}
+.service-icon {
+  font-size: 26px;
+  margin-bottom: 10px;
+  color: #f5a623;
+  position: relative;
+  z-index: 1;
+  transition: 0.3s;
+}
+
+.service:hover .service-icon {
+  color: #fff;
+  transform: scale(1.2);
+}
+
+/* =========================
+   CONDITIONS SECTION STYLE
+   ========================= */
+
+.conditions {
+  padding: 80px 60px;
+  background: #ffffff;
+}
+
+/* MAIN LAYOUT */
+.conditions-container {
+  display: flex;
+  gap: 50px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* LEFT SIDE */
+.conditions-left {
+  flex: 1;
+  max-width: 400px;
+}
+
+.conditions-left h2 {
+  font-size: 40px;
+  color: #1a2340;
+  margin-bottom: 20px;
+}
+
+.conditions-left .desc {
+  color: #555;
+  line-height: 1.6;
+}
+
+/* RIGHT SIDE */
+.conditions-right {
+  flex: 2;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+/* CONDITION ITEM */
+.condition-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px 20px;
+  border-radius: 12px;
+  background: #f5f5f5;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: 0.3s;
+}
+
+/* ICON */
+.condition-item i {
+  font-size: 20px;
+  color: #f5a623;
+  transition: 0.3s;
+}
+
+/* TEXT */
+.condition-item span {
+  font-weight: 500;
+  color: #1a2340;
+  transition: 0.3s;
+}
+
+/* HOVER COLOR FILL EFFECT */
+.condition-item::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #11b053;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: 0.4s;
+  z-index: 0;
+}
+
+/* HOVER ACTION */
+.condition-item:hover::before {
+  transform: scaleX(1);
+}
+
+.condition-item:hover i,
+.condition-item:hover span {
+  color: #fff;
+  position: relative;
+  z-index: 1;
+}
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 768px) {
+
+  .conditions {
+    padding: 50px 20px;
+  }
+
+  .conditions-container {
+    flex-direction: column;
+  }
+
+  .conditions-right {
+    grid-template-columns: 1fr;
+  }
+
+  .conditions-left h2 {
+    font-size: 28px;
+  }
+}
+.service-hero {
+  position: relative;
+  padding: 100px 60px;
+  overflow: hidden;
+  background: linear-gradient(-45deg,#eef2ff,#f5f7ff,#e0e7ff,#eef2ff);
+  background-size: 400% 400%;
+  animation: gradientMove 10s ease infinite;
+}
+
+/* ANIMATED BG */
+@keyframes gradientMove {
+  0% {background-position: 0% 50%;}
+  50% {background-position: 100% 50%;}
+  100% {background-position: 0% 50%;}
+}
+
+/* PARTICLES CANVAS */
+#particles {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+
+/* LAYOUT */
+.service-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  z-index: 2;
+}
+
+/* LEFT */
+.service-left {
+  max-width: 500px;
+}
+
+.service-left h1 {
+  font-size: 46px;
+  color: #1a2340;
+}
+
+/* GLASS TAGS */
+.features span {
+  display: inline-block;
+  margin: 6px;
+  padding: 8px 14px;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.6);
+  backdrop-filter: blur(10px);
+}
+
+/* BUTTON */
+.start-btn {
+  padding: 12px 25px;
+  background: linear-gradient(135deg,#6c63ff,#4b44d4);
+  color: white;
+  border-radius: 30px;
+  display: inline-block;
+}
+
+/* RIGHT */
+.service-right {
+  position: relative;
+}
+
+/* IMAGE 3D */
+.circle-wrap {
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  overflow: hidden;
+  transform-style: preserve-3d;
+  transition: 0.2s;
+}
+
+.circle-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ORBIT */
+.orbit {
+  position: absolute;
+  width: 420px;
+  height: 420px;
+  border: 2px dashed #cfd6ff;
+  border-radius: 50%;
+  animation: rotate 15s linear infinite;
+}
+
+/* ROTATION */
+@keyframes rotate {
+  from { transform: rotate(0); }
+  to { transform: rotate(360deg); }
+}
+
+/* SCROLL */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: 0.8s;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+/* =========================
+   MOBILE RESPONSIVE FIX
+   (FOR SERVICE HERO SECTION)
+========================= */
+
+@media (max-width: 992px) {
+
+  .service-container {
+    flex-direction: column;
+    text-align: center;
+    gap: 50px;
+  }
+
+  .service-left {
+    max-width: 100%;
+  }
+
+  .service-left h1 {
+    font-size: 38px;
+  }
+
+  .service-left .desc {
+    font-size: 16px;
+  }
+
+  .features {
+    justify-content: center;
+  }
+
+  .features span {
+    margin: 5px;
+  }
+
+  .service-right {
+    transform: scale(0.95);
+  }
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+
+  .service-hero {
+    padding: 60px 20px;
+  }
+
+  .service-left h1 {
+    font-size: 28px;
+    line-height: 1.3;
+  }
+
+  .service-left .desc {
+    font-size: 14px;
+  }
+
+  .features {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .features span {
+    font-size: 12px;
+    padding: 6px 10px;
+  }
+
+  .start-btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  /* RIGHT SIDE IMAGE FIX */
+  .service-right {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .circle-wrap {
+    width: 240px;
+    height: 240px;
+  }
+
+  .orbit {
+    width: 280px;
+    height: 280px;
+  }
+
+  /* DISABLE HEAVY ANIMATION ON MOBILE */
+  .service-hero::before {
+    animation: none;
+  }
+
+  #tilt {
+    transform: none !important;
+  }
+}
+
+/* SMALL PHONES */
+@media (max-width: 400px) {
+
+  .service-left h1 {
+    font-size: 24px;
+  }
+
+  .circle-wrap {
+    width: 200px;
+    height: 200px;
+  }
+
+  .orbit {
+    width: 220px;
+    height: 220px;
+  }
+}
+
+/* ===================== LEAD DOCTOR SECTION ===================== */
+.lead-doc{
+  display:flex;
+  gap:60px;
+  align-items:center;
+  padding:90px 70px;
+  background:linear-gradient(135deg,#f7faff,#eef3ff,#ffffff);
+}
+
+/* LEFT SIDE */
+.ld-left{
+  flex:1;
+}
+
+/* IMAGE FRAME */
+.img-frame{
+  position:relative;
+  border-radius:20px;
+  overflow:hidden;
+  box-shadow:0 25px 60px rgba(0,0,0,0.15);
+}
+
+.img-frame img{
+  width:100%;
+  height:420px;
+  object-fit:cover;
+  transition:0.5s;
+}
+
+.img-frame:hover img{
+  transform:scale(1.05);
+}
+
+/* EXPERIENCE BADGE */
+.exp-badge{
+  position:absolute;
+  bottom:15px;
+  left:15px;
+  background:#6c63ff;
+  color:#fff;
+  padding:10px 14px;
+  border-radius:25px;
+  font-size:13px;
+  font-weight:600;
+}
+
+/* QUICK INFO STATS */
+.quick-info{
+  display:flex;
+  justify-content:space-between;
+  margin-top:20px;
+  text-align:center;
+}
+
+.quick-info h3{
+  color:#1a2340;
+  font-size:20px;
+}
+
+.quick-info p{
+  font-size:12px;
+  color:#666;
+}
+
+/* RIGHT SIDE */
+.ld-right{
+  flex:1;
+}
+
+/* TAG */
+.tag{
+  color:#6c63ff;
+  font-weight:600;
+  font-size:13px;
+}
+
+/* NAME */
+.ld-right h1{
+  font-size:36px;
+  color:#1a2340;
+  margin:10px 0 5px;
+}
+
+/* SUBTITLE */
+.sub{
+  color:#6c63ff;
+  font-weight:500;
+  margin-bottom:15px;
+}
+
+/* DESCRIPTION */
+.desc{
+  color:#555;
+  line-height:1.7;
+  margin-bottom:12px;
+  font-size:15px;
+}
+
+/* CERTIFICATION STRIP */
+.cert-strip{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:20px;
+}
+
+/* CERT TAGS */
+.cert-strip span{
+  background:#ffffff;
+  border:1px solid rgba(108,99,255,0.2);
+  padding:8px 12px;
+  border-radius:25px;
+  font-size:12px;
+  transition:0.3s;
+}
+
+/* HOVER EFFECT */
+.cert-strip span:hover{
+  background:#6c63ff;
+  color:#fff;
+  transform:translateY(-3px);
+}
+
+/* MOBILE */
+/* =========================
+   LEAD DOCTOR SECTION - MOBILE FIX
+   ========================= */
+
+@media (max-width: 900px) {
+
+  .lead-doc {
+    flex-direction: column;
+    padding: 50px 20px;
+    gap: 30px;
+    text-align: center;
+  }
+
+  /* IMAGE SECTION */
+  .ld-left {
+    width: 100%;
+  }
+
+  .img-frame img {
+    height: 300px; /* reduce tall image on mobile */
+  }
+
+  .exp-badge {
+    font-size: 12px;
+    padding: 8px 12px;
+  }
+
+  /* QUICK INFO STACK */
+  .quick-info {
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 15px;
+  }
+
+  .quick-info h3 {
+    font-size: 18px;
+  }
+
+  .quick-info p {
+    font-size: 12px;
+  }
+
+  /* RIGHT SIDE TEXT */
+  .ld-right {
+    width: 100%;
+  }
+
+  .ld-right h1 {
+    font-size: 26px;
+    line-height: 1.3;
+  }
+
+  .ld-right .sub {
+    font-size: 14px;
+  }
+
+  .desc {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  /* CERTIFICATIONS */
+  .cert-strip {
+    justify-content: center;
+  }
+
+  .cert-strip span {
+    font-size: 11px;
+    padding: 6px 10px;
+  }
+}
+
+/* EXTRA SMALL DEVICES */
+@media (max-width: 480px) {
+
+  .img-frame img {
+    height: 240px;
+  }
+
+  .ld-right h1 {
+    font-size: 22px;
+  }
+
+  .cert-strip {
+    gap: 8px;
+  }
+}
+
+/* ================= TEAM SECTION ================= */
+
+.team-section{
+  padding:80px 60px;
+  background:#f7f9ff;
+}
+
+.team-header{
+  text-align:center;
+  margin-bottom:40px;
+}
+
+.team-header h2{
+  font-size:38px;
+  color:#1a2340;
+}
+
+.team-header p{
+  color:#666;
+}
+
+.team-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:25px;
+}
+
+/* CARD */
+.doctor-card{
+  background:#fff;
+  border-radius:18px;
+  padding:15px;
+  text-align:center;
+  cursor:pointer;
+  box-shadow:0 10px 30px rgba(0,0,0,0.08);
+  transition:0.4s;
+}
+
+.doctor-card img{
+  width:100%;
+  height:260px;
+  object-fit:cover;
+  border-radius:14px;
+}
+
+.doctor-card:hover{
+  transform:translateY(-10px) scale(1.03);
+  box-shadow:0 20px 50px rgba(0,0,0,0.15);
+}
+
+.stars{
+  color:#f5a623;
+  margin-top:5px;
+}
+
+/* ================= MODAL ================= */
+
+.modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.6);
+  justify-content:center;
+  align-items:center;
+  z-index:9999;
+}
+
+.modal-content{
+  width:380px;
+  background:#fff;
+  padding:25px;
+  border-radius:18px;
+  text-align:center;
+  animation:pop 0.3s ease;
+  position:relative;
+}
+
+/* POPUP IMAGE */
+.modal-content img{
+  width:130px;
+  height:130px;
+  border-radius:50%;
+  object-fit:cover;
+  border:4px solid #6c63ff;
+  margin-top:-70px;
+  background:#fff;
+}
+
+.modal-content h2{
+  margin-top:10px;
+  color:#1a2340;
+}
+
+.modal-content p{
+  color:#555;
+  font-size:14px;
+}
+
+/* QUALIFICATION */
+.qual{
+  text-align:left;
+  margin:15px 0;
+  font-size:13px;
+  color:#333;
+}
+
+/* RATING */
+.rating{
+  color:#f5a623;
+  margin:10px 0;
+}
+
+/* BUTTON */
+.book-btn{
+  background:#6c63ff;
+  color:#fff;
+  border:none;
+  padding:10px 18px;
+  border-radius:25px;
+  cursor:pointer;
+  margin-top:10px;
+}
+
+/* CLOSE */
+.close{
+  position:absolute;
+  right:15px;
+  top:10px;
+  font-size:22px;
+  cursor:pointer;
+}
+
+/* ANIMATION */
+@keyframes pop{
+  from{transform:scale(0.6);opacity:0}
+  to{transform:scale(1);opacity:1}
+}
+
+/* MOBILE */
+@media(max-width:768px){
+  .team-grid{
+    grid-template-columns:1fr;
+  }
+
+  .team-section{
+    padding:50px 20px;
+  }
+
+  .modal-content{
+    width:90%;
+  }
+}
+
+.facilities{
+  padding:80px 60px;
+  background:linear-gradient(135deg,#eef2ff,#f8fbff);
+}
+
+.facilities-header{
+  text-align:center;
+  margin-bottom:40px;
+}
+
+.facilities-header h2{
+  font-size:40px;
+  color:#1a2340;
+}
+
+.facilities-header p{
+  color:#666;
+}
+
+/* GRID */
+.facility-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:25px;
+}
+
+/* CARD */
+.facility-card{
+  background:rgba(255,255,255,0.7);
+  backdrop-filter: blur(12px);
+  border-radius:18px;
+  padding:18px;
+  box-shadow:0 15px 40px rgba(0,0,0,0.08);
+  transition:0.4s;
+  transform-style:preserve-3d;
+}
+
+/* IMAGE */
+.img-box{
+  overflow:hidden;
+  border-radius:14px;
+}
+
+.img-box img{
+  width:100%;
+  height:220px;
+  object-fit:cover;
+  transition:0.5s;
+}
+
+/* HOVER EFFECT */
+.facility-card:hover{
+  transform:translateY(-10px) scale(1.02);
+  box-shadow:0 25px 60px rgba(0,0,0,0.15);
+}
+
+.facility-card:hover img{
+  transform:scale(1.1);
+}
+
+/* BUTTON */
+.facility-card button{
+  margin-top:10px;
+  padding:10px 15px;
+  border:none;
+  background:#6c63ff;
+  color:#fff;
+  border-radius:25px;
+  cursor:pointer;
+}
+
+/* HIDDEN LIST */
+.hidden-list{
+  display:none;
+  margin-top:10px;
+  padding-left:15px;
+  color:#333;
+  font-size:14px;
+}
+
+.hidden-list.show{
+  display:block;
+}
+
+/* SCROLL REVEAL */
+.reveal{
+  opacity:0;
+  transform:translateY(40px);
+  transition:0.8s ease;
+}
+
+.reveal.active{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* MOBILE */
+@media(max-width:768px){
+  .facility-grid{
+    grid-template-columns:1fr;
+  }
+
+  .facilities{
+    padding:50px 20px;
+  }
+
+  .facilities-header h2{
+    font-size:28px;
+  }
+}
+
+/* SECTION */
+.home-visit {
+  padding: 60px 20px;
+  background: #f8fbff;
+}
+
+.container {
+  max-width: 1100px;
+  margin: auto;
+}
+
+h2 {
+  text-align: center;
+  font-size: 32px;
+  color: #0d6efd;
+}
+
+.subtitle {
+  text-align: center;
+  margin-bottom: 40px;
+  color: #555;
+}
+
+.content {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+/* LEFT */
+.left {
+  flex: 1;
+}
+
+.left h3 {
+  margin-top: 20px;
+}
+
+.left ul {
+  padding-left: 20px;
+}
+
+.left li {
+  margin-bottom: 10px;
+}
+
+/* RIGHT FORM */
+.right {
+  flex: 1;
+  background: #fff;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.right h3 {
+  margin-bottom: 20px;
+  color: #0d6efd;
+}
+
+form input,
+form select {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+form input:focus,
+form select:focus {
+  border-color: #0d6efd;
+  outline: none;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  background: #0d6efd;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #084298;
+}
+
+.cta {
+  margin-top: 15px;
+  text-align: center;
+  font-size: 14px;
+}
+
+/* SUCCESS MESSAGE */
+.success {
+  display: none;
+  color: green;
+  text-align: center;
+  margin-top: 10px;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .content {
+    flex-direction: column;
+  }
+}
+
+.testimonials {
+  padding: 60px 20px;
+  background: #f9fbff;
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+.testimonials h2 {
+  font-size: 32px;
+  color: #0d6efd;
+}
+
+.subtitle {
+  margin-bottom: 40px;
+  color: #555;
+}
+
+.slider {
+  position: relative;
+  max-width: 600px;
+  margin: auto;
+}
+
+.card {
+  display: none;
+  background: #fff;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  animation: fade 0.5s ease-in-out;
+}
+
+.card.active {
+  display: block;
+}
+
+.name {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.review {
+  font-style: italic;
+  margin-bottom: 15px;
+}
+
+.result p {
+  margin: 5px 0;
+}
+
+.stars {
+  margin-top: 10px;
+  color: #ffc107;
+  font-size: 18px;
+}
+
+/* DOTS */
+.dots {
+  margin-top: 20px;
+}
+
+.dot {
+  height: 10px;
+  width: 10px;
+  margin: 5px;
+  display: inline-block;
+  background: #ccc;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.dot.active {
+  background: #0d6efd;
+}
+
+/* TRUST LINE */
+.trust-line {
+  margin-top: 30px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* ANIMATION */
+@keyframes fade {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+  .card {
+    padding: 20px;
+  }
+}
+
+.gallery-section{
+  padding:60px 8%;
+  text-align:center;
+}
+
+.gallery-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:20px;
+  margin-top:30px;
+}
+
+.gallery-card{
+  position:relative;
+  overflow:hidden;
+  border-radius:15px;
+}
+
+.gallery-card img,
+.gallery-card video{
+  width:100%;
+  height:250px;
+  object-fit:cover;
+  transition:0.4s;
+}
+
+.gallery-card:hover img{
+  transform:scale(1.1);
+}
+
+/* VIDEO BUTTON */
+.play-btn{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  font-size:30px;
+  background:#fff;
+  padding:10px 15px;
+  border-radius:50%;
+  cursor:pointer;
+}
+
+/* ===== GALLERY SECTION ===== */
+.gallery-section {
+  padding: 80px 60px;
+  background: linear-gradient(135deg,#f9fbff,#eef3ff);
+  text-align: center;
+}
+
+.gallery-title {
+  font-size: 38px;
+  color: #1a2340;
+  margin-bottom: 10px;
+}
+
+.gallery-subtitle {
+  color: #666;
+  margin-bottom: 40px;
+}
+
+/* GRID */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 25px;
+}
+
+/* CARD */
+.gallery-card {
+  position: relative;
+  border-radius: 15px;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  transition: 0.4s;
+}
+
+/* IMAGE */
+.gallery-card img {
+  width: 100%;
+  height: 230px;
+  object-fit: cover;
+  transition: 0.4s;
+}
+
+/* OVERLAY */
+.overlay {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+  color: #fff;
+  font-size: 14px;
+}
+
+/* HOVER EFFECT */
+.gallery-card:hover img {
+  transform: scale(1.1);
+}
+
+.gallery-card:hover {
+  transform: translateY(-8px);
+}
+
+/* PLAY ICON */
+.gallery-card::after {
+  content: "▶";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  font-size: 30px;
+  color: white;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+  .gallery-grid{
+    grid-template-columns:1fr;
+  }
+
+  .gallery-section{
+    padding:50px 20px;
+  }
+
+  .gallery-title{
+    font-size:26px;
+  }
+}
+
+/* =========================
+   BLOG SECTION (ADVANCED UI)
+========================= */
+.blog-section{
+  padding:80px 8%;
+  background:linear-gradient(135deg,#f5f8ff,#eef2ff);
+  text-align:center;
+}
+
+.blog-section h2{
+  font-size:34px;
+  color:#1a2340;
+}
+
+.blog-subtitle{
+  color:#666;
+  margin-bottom:40px;
+}
+
+/* GRID */
+.blog-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:30px;
+}
+
+/* CARD */
+.blog-card{
+  background:#fff;
+  border-radius:18px;
+  overflow:hidden;
+  box-shadow:0 15px 35px rgba(0,0,0,0.08);
+  transition:0.4s;
+  text-align:left;
+}
+
+.blog-card:hover{
+  transform:translateY(-12px);
+  box-shadow:0 20px 45px rgba(0,0,0,0.15);
+}
+
+/* IMAGE */
+.blog-card img{
+  width:100%;
+  height:200px;
+  object-fit:cover;
+}
+
+/* CONTENT */
+.blog-content{
+  padding:20px;
+}
+
+/* TAG */
+.tag{
+  background:#6c63ff;
+  color:#fff;
+  font-size:12px;
+  padding:4px 10px;
+  border-radius:20px;
+}
+
+/* META */
+.meta{
+  display:block;
+  font-size:12px;
+  color:#999;
+  margin-top:5px;
+}
+
+/* TITLE */
+.blog-card h3{
+  margin:10px 0;
+  color:#1a2340;
+}
+
+/* TEXT */
+.blog-card p{
+  font-size:14px;
+  color:#666;
+  line-height:1.6;
+}
+
+/* AUTHOR */
+.author{
+  margin-top:10px;
+  font-size:13px;
+  color:#444;
+}
+
+/* BUTTON */
+.blog-card button{
+  margin-top:15px;
+  background:linear-gradient(135deg,#6c63ff,#4facfe);
+  color:#fff;
+  border:none;
+  padding:10px 18px;
+  border-radius:25px;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.blog-card button:hover{
+  transform:scale(1.05);
+}
+
+/* MOBILE */
+@media(max-width:768px){
+  .blog-section{
+    padding:60px 20px;
+  }
+
+  .blog-section h2{
+    font-size:26px;
+  }
+}
+/* =========================
+   CONTACT SECTION (PREMIUM)
+========================= */
+.contact-section{
+  padding:80px 8%;
+  background:linear-gradient(135deg,#eef2ff,#f9fbff);
+  text-align:center;
+}
+
+.contact-section h2{
+  font-size:34px;
+  color:#1a2340;
+}
+
+.subtitle{
+  color:#666;
+  margin-bottom:40px;
+}
+
+/* WRAPPER */
+.contact-wrapper{
+  display:flex;
+  gap:40px;
+  flex-wrap:wrap;
+}
+
+/* FORM */
+#bookingForm{
+  flex:1;
+  background:#fff;
+  padding:30px;
+  border-radius:20px;
+  box-shadow:0 15px 40px rgba(0,0,0,0.1);
+  display:flex;
+  flex-direction:column;
+  gap:15px;
+}
+
+#bookingForm input,
+#bookingForm select,
+#bookingForm textarea{
+  padding:12px;
+  border-radius:10px;
+  border:1px solid #ddd;
+  font-size:14px;
+}
+
+#bookingForm textarea{
+  resize:none;
+  height:80px;
+}
+
+/* BUTTON */
+#bookingForm button{
+  background:linear-gradient(135deg,#25D366,#128C7E);
+  color:#fff;
+  padding:12px;
+  border:none;
+  border-radius:30px;
+  cursor:pointer;
+  font-size:15px;
+  transition:0.3s;
+}
+
+#bookingForm button:hover{
+  transform:scale(1.05);
+}
+
+/* SUCCESS */
+#successMsg{
+  display:none;
+  color:#28a745;
+  font-size:14px;
+}
+
+/* INFO */
+.contact-info{
+  flex:1;
+  text-align:left;
+  background:#fff;
+  padding:30px;
+  border-radius:20px;
+  box-shadow:0 15px 40px rgba(0,0,0,0.1);
+}
+
+.contact-info h3{
+  margin-bottom:15px;
+  color:#1a2340;
+}
+
+/* BUTTONS */
+.contact-buttons{
+  margin:15px 0;
+}
+
+.call-btn,
+.whatsapp-btn{
+  display:inline-block;
+  margin:5px;
+  padding:10px 18px;
+  border-radius:25px;
+  color:#fff;
+  text-decoration:none;
+  transition:0.3s;
+}
+
+.call-btn{
+  background:#28a745;
+}
+
+.whatsapp-btn{
+  background:#25D366;
+}
+
+.call-btn:hover,
+.whatsapp-btn:hover{
+  transform:scale(1.05);
+}
+
+/* MAP */
+iframe{
+  width:100%;
+  height:220px;
+  border:none;
+  margin-top:15px;
+  border-radius:15px;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+  .contact-section{
+    padding:60px 20px;
+  }
+
+  .contact-wrapper{
+    flex-direction:column;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="nav-container">
+
+    <!-- LOGO -->
+    <div class="logo">
+      <img src="images/logo.png">
+      
+    </div>
+
+    <!-- MENU -->
+    <ul class="nav-links" id="menu">
+  <li><a href="#home">Home</a></li>
+  <li><a href="#about">About</a></li>
+  <li><a href="#services">Services</a></li>
+  <li><a href="#testimonials">Testimonials</a></li>
+  <li><a href="#contact">Contact</a></li>
+  <li><a href="#gallery">Gallery</a></li>
+</ul>
+
+    <!-- BUTTON -->
+    <a href="#" class="nav-btn">Book Appointment</a>
+
+    <!-- HAMBURGER -->
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+  </div>
+</nav>
+<!---hero-->
+
+<section class="hero" id="home">
+
+  <!-- LEFT CONTENT -->
+  <div class="hero-content">
+    <h1>
+      Get Back to <br>
+      <span>Pain-Free Life</span>
+    </h1>
+
+    <p>
+      Comprehensive Physiotherapy for Healing & Mobility.
+      Expert care to help you recover faster and live better.
+    </p>
+
+    <a href="#" class="hero-btn">Book Appointment</a>
+  </div>
+
+  <!-- RIGHT IMAGE -->
+  <div class="hero-image">
+    <img src="images/hospital.jpeg" alt="Rehabilitation">
+  </div>
+
+</section>
+
+<section class="about" id="about">
+  <div class="about-container">
+
+    <!-- IMAGE SIDE -->
+    <div class="about-image">
+      <div class="image-wrapper">
+        <img class="img1" src="https://images.pexels.com/photos/20860624/pexels-photo-20860624.jpeg" />
+        <img class="img2" src="https://images.pexels.com/photos/20860622/pexels-photo-20860622.jpeg" />
+
+        <div class="badge">
+          <span>✔ Trusted Care</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- TEXT SIDE -->
+    <div class="about-text">
+      <h2>About Shraddha Physiotherapy & Rehabilitation Center</h2>
+
+      <p>
+        Shraddha Physiotherapy & Rehabilitation Center, located in Harinathpuram, Nellore,
+        is a trusted destination for advanced physiotherapy and rehabilitation care.
+      </p>
+
+      <p>
+        The center offers orthopedic physiotherapy, neurological rehab,
+        post-surgical recovery, and sports injury treatments.
+      </p>
+
+      <ul>
+        <li>✔ Experienced & certified physiotherapists</li>
+        <li>✔ Personalized treatment plans</li>
+        <li>✔ Modern equipment</li>
+        <li>✔ Friendly environment</li>
+      </ul>
+
+      <button class="about-btn">Contact Us →</button>
+    </div>
+
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="services-container">
+
+    <!-- LEFT SIDE -->
+    <div class="services-left">
+      <p class="tag">• OUR SERVICES</p>
+      <h2>Rehabilitation <br>Services</h2>
+
+      <p class="desc">
+        We provide advanced physiotherapy treatments designed to restore mobility,
+        reduce pain, and improve your quality of life.
+      </p>
+
+      <a href="#" class="service-btn">View All Services →</a>
+    </div>
+
+    <!-- RIGHT SIDE -->
+    <div class="services-right">
+
+      <div class="service">
+        <div class="service-icon"><i class="fas fa-bone"></i></div>
+        <h3>Orthopedic Physiotherapy</h3>
+        <p>Expert treatment for joint pain, fractures, arthritis, and mobility issues.</p>
+      </div>
+
+      <div class="service">
+        
+        <h3>Neurological Physiotherapy</h3>
+        <div class="service-icon"><i class="fas fa-brain"></i></div>
+        <p>Recovery support for stroke, paralysis, and neurological conditions.</p>
+      </div>
+
+      <div class="service">
+        <div class="service-icon"><i class="fas fa-running"></i></div>
+        <h3>Sports Injury Rehab</h3>
+        <p>Faster recovery for sports injuries with strength & mobility training.</p>
+      </div>
+
+      <div class="service">
+        <div class="service-icon"><i class="fas fa-hospital-user"></i></div>
+        <h3>Post-Surgery Rehab</h3>
+        <p>Structured rehabilitation programs for faster healing after surgery.</p>
+      </div>
+
+      <div class="service">
+        <div class="service-icon"><i class="fas fa-heart-pulse"></i></div>
+        <h3>Pain Management</h3>
+        <p>Advanced therapy techniques to reduce chronic pain and discomfort.</p>
+      </div>
+
+      <div class="service">
+        <div class="service-icon"><i class="fas fa-house-medical"></i></div>
+        <h3>Home Physiotherapy</h3>
+        <p>Personalized therapy sessions in the comfort of your home.</p>
+      </div>
+
+      <div class="service">
+        <div class="service-icon"><i class="fas fa-user-injured"></i></div>
+        <h3>Geriatric Care</h3>
+        <p>Specialized care for elderly patients to improve strength & balance.</p>
+      </div>
+
+      <div class="service">
+        <div class="service-icon"><i class="fas fa-child"></i></div>
+        <h3>Pediatric Therapy</h3>
+        <p>Therapy designed to support children’s physical development.</p>
+      </div>
+
+      <div class="service">
+        <div class="service-icon"><i class="fas  fa-female"></i></div>
+        <h3>Women’s Health Physiotherapy</h3>
+        <p>Care for pregnancy, postnatal recovery, and women’s wellness.</p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- =========================
+     CONDITIONS WE TREAT SECTION
+     ========================= -->
+<section id="conditions" class="conditions">
+
+  <div class="conditions-container">
+
+    <!-- LEFT CONTENT (Heading + Description) -->
+    <div class="conditions-left">
+      <p class="tag">• CONDITIONS WE TREAT</p>
+      <h2>We Help You Recover From</h2>
+
+      <p class="desc">
+        Our expert physiotherapy treatments address a wide range of conditions
+        to help you regain mobility, reduce pain, and improve your quality of life.
+      </p>
+    </div>
+
+    <!-- RIGHT CONTENT (Condition List) -->
+    <div class="conditions-right">
+
+      <!-- ITEM -->
+      <div class="condition-item">
+        <i class="fa-solid fa-bone"></i>
+        <span>Back Pain</span>
+      </div>
+
+      <div class="condition-item">
+        <i class="fa-solid fa-user-injured"></i>
+        <span>Neck Pain</span>
+      </div>
+
+      <div class="condition-item">
+        <i class="fa-solid fa-wheelchair"></i>
+        <span>Paralysis</span>
+      </div>
+
+      <div class="condition-item">
+        <i class="fa-solid fa-hand"></i>
+        <span>Arthritis</span>
+      </div>
+
+      <div class="condition-item">
+        <i class="fa-solid fa-dumbbell"></i>
+        <span>Sports Injuries</span>
+      </div>
+
+      <div class="condition-item">
+        <i class="fa-solid fa-brain"></i>
+        <span>Stroke Recovery</span>
+      </div>
+
+      <div class="condition-item">
+        <i class="fa-solid fa-user"></i>
+        <span>Spinal Cord Injury</span>
+      </div>
+
+      <div class="condition-item">
+        <i class="fa-solid fa-heart-pulse"></i>
+        <span>Neuropathy</span>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+<!---TREATMENTS / TECHNIQUES-->
+<section class="service-hero">
+
+  <canvas id="particles"></canvas>
+
+  <div class="service-container">
+
+    <!-- LEFT -->
+    <div class="service-left reveal">
+      <p class="tag">.TREATMENTS / TECHNIQUES</p>
+
+      <h1>
+        Advanced Physiotherapy <br>
+        & Rehabilitation Care
+      </h1>
+
+      <p class="desc">
+        Restore mobility, reduce pain, and regain confidence with expert-led rehabilitation.
+      </p>
+
+      <div class="features">
+        <span>✔ Pain Relief</span>
+        <span>✔ Neuro Rehab</span>
+        <span>✔ Post Surgery</span>
+        <span>✔ Home Care</span>
+      </div>
+
+      <a href="#" class="start-btn">Book Appointment →</a>
+    </div>
+
+    <!-- RIGHT -->
+    <div class="service-right">
+
+      <div class="circle-wrap" id="tilt">
+        <img src="https://images.pexels.com/photos/4506105/pexels-photo-4506105.jpeg">
+      </div>
+
+      <div class="orbit"></div>
+
+    </div>
+
+  </div>
+
+</section>
+<!-- ===================== LEAD PHYSICIAN SECTION ===================== -->
+<section class="lead-doc" id="founder">
+
+  <!-- LEFT: IMAGE + EXPERIENCE -->
+  <div class="ld-left">
+
+    <div class="img-frame">
+      <img src="images/doctor1.png" alt="Dr. Reddy">
+
+      <!-- floating experience badge -->
+      <div class="exp-badge">
+        23+ Years Clinical Experience
+      </div>
+    </div>
+
+    <!-- QUICK HIGHLIGHTS -->
+    <div class="quick-info">
+      <div>
+        <h3>5000+</h3>
+        <p>Patients Treated</p>
+      </div>
+      <div>
+        <h3>4.9★</h3>
+        <p>Clinical Rating</p>
+      </div>
+      <div>
+        <h3>100%</h3>
+        <p>Patient Focus</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- RIGHT: CONTENT -->
+  <div class="ld-right">
+
+    <p class="tag">• LEAD PHYSICIAN & FOUNDER</p>
+
+    <h1>
+      Dr. N. Venu Gopal Reddy
+    </h1>
+
+    <p class="sub">
+      MPT, MBA • Senior Physiotherapist • Clinical Director
+    </p>
+
+    <p class="desc">
+      A highly experienced physiotherapy expert specializing in advanced rehabilitation,
+      manual therapy, dry needling, and neuro-musculoskeletal recovery.
+      His clinical approach is focused on precision diagnosis, evidence-based treatment,
+      and long-term functional improvement.
+    </p>
+
+    <p class="desc">
+      He integrates international training standards into daily clinical practice and ensures
+      students gain real-time exposure through <b>In-House Clinical Training Programs</b>.
+    </p>
+
+    <!-- CERTIFICATION STRIP -->
+    <div class="cert-strip">
+
+      <span>🏥 London Shoulder Clinic Tutor</span>
+      <span>👐 Manual Therapy Expert</span>
+      <span>💉 Dry Needling Certified</span>
+      <span>🧠 NDT Trainer</span>
+
+    </div>
+
+  </div>
+
+</section>
+<!-- ===================== STAFF DOCTORS SECTION ===================== -->
+<section class="team-section" id="team">
+
+  <div class="team-header">
+    <h2>Our Expert Medical Team</h2>
+    <p>Dedicated physiotherapists committed to your recovery and care</p>
+  </div>
+
+  <div class="team-grid">
+
+    <div class="doctor-card" onclick="openDoctor('doc1')">
+      <img src="https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg">
+      <h3>Dr. Priya Sharma</h3>
+      <p>Senior Physiotherapist</p>
+      <div class="stars">⭐⭐⭐⭐⭐</div>
+    </div>
+
+    <div class="doctor-card" onclick="openDoctor('doc2')">
+      <img src="https://images.pexels.com/photos/5452293/pexels-photo-5452293.jpeg">
+      <h3>Dr. Kiran Kumar</h3>
+      <p>Neuro Rehab Specialist</p>
+      <div class="stars">⭐⭐⭐⭐⭐</div>
+    </div>
+
+    <div class="doctor-card" onclick="openDoctor('doc3')">
+      <img src="https://images.pexels.com/photos/5214958/pexels-photo-5214958.jpeg">
+      <h3>Dr. Anjali Reddy</h3>
+      <p>Sports Injury Expert</p>
+      <div class="stars">⭐⭐⭐⭐⭐</div>
+    </div>
+
+
+    <div class="doctor-card" onclick="openDoctor('doc1')">
+      <img src="https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg">
+      <h3>Dr. Priya Sharma</h3>
+      <p>Senior Physiotherapist</p>
+      <div class="stars">⭐⭐⭐⭐⭐</div>
+    </div>
+
+    <div class="doctor-card" onclick="openDoctor('doc2')">
+      <img src="https://images.pexels.com/photos/5452293/pexels-photo-5452293.jpeg">
+      <h3>Dr. Kiran Kumar</h3>
+      <p>Neuro Rehab Specialist</p>
+      <div class="stars">⭐⭐⭐⭐⭐</div>
+    </div>
+
+    <div class="doctor-card" onclick="openDoctor('doc3')">
+      <img src="https://images.pexels.com/photos/5214958/pexels-photo-5214958.jpeg">
+      <h3>Dr. Anjali Reddy</h3>
+      <p>Sports Injury Expert</p>
+      <div class="stars">⭐⭐⭐⭐⭐</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===================== MODAL ===================== -->
+<div id="doctorModal" class="modal">
+
+  <div class="modal-content">
+
+    <span class="close" onclick="closeDoctor()">&times;</span>
+
+    <!-- IMAGE -->
+    <img id="mImg" src="">
+
+    <!-- INFO -->
+    <h2 id="mName"></h2>
+    <p id="mRole"></p>
+
+    <p id="mDesc"></p>
+
+    <div class="qual">
+      <p>✔ Qualification: MPT (Physiotherapy)</p>
+      <p>✔ Experience: 8–15 Years</p>
+      <p>✔ Specialty: Advanced Rehab Care</p>
+    </div>
+
+    <div class="rating">⭐⭐⭐⭐⭐ <span>4.9/5 Patient Rating</span></div>
+
+    <button class="book-btn">Book Appointment</button>
+
+  </div>
+
+</div>
+
+<!---Our Facilities & Infrastructure-->
+<section class="facilities" id="facilities">
+
+  <div class="facilities-header">
+    <h2>🏢 Our Facilities & Infrastructure</h2>
+    <p>Modern rehab environment designed for fast recovery & comfort</p>
+  </div>
+
+  <div class="facility-grid">
+
+    <!-- CARD 1 -->
+    <div class="facility-card reveal">
+      <div class="img-box">
+        <img src="https://images.pexels.com/photos/4167542/pexels-photo-4167542.jpeg">
+      </div>
+      <h3>Rehab Gym</h3>
+      <p>Fully equipped physiotherapy gym for strength & mobility training.</p>
+      <button onclick="toggleList(this)">View Equipment</button>
+
+      <ul class="hidden-list">
+        <li>Treadmill Training System</li>
+        <li>Balance Boards</li>
+        <li>Resistance Bands</li>
+        <li>Cycle Rehab Machine</li>
+      </ul>
+    </div>
+
+    <!-- CARD 2 -->
+    <div class="facility-card reveal">
+      <div class="img-box">
+        <img src="https://images.pexels.com/photos/3844581/pexels-photo-3844581.jpeg">
+      </div>
+      <h3>Electro Therapy Unit</h3>
+      <p>Advanced pain relief systems for faster recovery and healing.</p>
+      <button onclick="toggleList(this)">View Equipment</button>
+
+      <ul class="hidden-list">
+        <li>TENS Therapy</li>
+        <li>IFT Machine</li>
+        <li>Ultrasound Therapy</li>
+        <li>Muscle Stimulator</li>
+      </ul>
+    </div>
+
+    <!-- CARD 3 -->
+    <div class="facility-card reveal">
+      <div class="img-box">
+        <img src="https://images.pexels.com/photos/6129043/pexels-photo-6129043.jpeg">
+      </div>
+      <h3>Private Therapy Rooms</h3>
+      <p>Comfortable and private treatment rooms for patient care.</p>
+      <button onclick="toggleList(this)">View Features</button>
+
+      <ul class="hidden-list">
+        <li>Air Conditioned Rooms</li>
+        <li>Hygienic Setup</li>
+        <li>Patient Privacy</li>
+        <li>Soft Lighting</li>
+      </ul>
+    </div>
+
+    <!-- CARD 4 -->
+    <div class="facility-card reveal">
+      <div class="img-box">
+        <img src="https://images.pexels.com/photos/1170979/pexels-photo-1170979.jpeg">
+      </div>
+      <h3>Clean Environment</h3>
+      <p>Hospital-grade hygiene for safe and infection-free treatment.</p>
+      <button onclick="toggleList(this)">View Standards</button>
+
+      <ul class="hidden-list">
+        <li>Daily Sanitization</li>
+        <li>Sterile Equipment</li>
+        <li>Clean Waiting Area</li>
+        <li>Air Purification System</li>
+      </ul>
+    </div>
+
+  </div>
+
+</section>
+
+<section class="home-visit">
+  <div class="container">
+
+    <h2>🏠 Home Visit Physiotherapy Service</h2>
+    <p class="subtitle">We Come to Your Home — Comfort, Safety & Better Care</p>
+
+    <div class="content">
+
+      <!-- LEFT -->
+      <div class="left">
+        <h3>Why Choose Home Visits?</h3>
+        <ul>
+          <li>✔ No travel needed – get treated at home</li>
+          <li>✔ Ideal for elderly & post-surgery patients</li>
+          <li>✔ One-on-one personalized care</li>
+          <li>✔ Safe & comfortable environment</li>
+          <li>✔ Faster recovery</li>
+        </ul>
+
+        <h3>Who Can Benefit?</h3>
+        <ul>
+          <li>• Post-surgery (knee, hip, spine)</li>
+          <li>• Stroke / paralysis recovery</li>
+          <li>• Elderly mobility issues</li>
+          <li>• Back & neck pain</li>
+          <li>• Sports injury rehab</li>
+        </ul>
+      </div>
+
+      <!-- RIGHT -->
+      <div class="right">
+        <h3>📅 Book a Home Visit</h3>
+
+        <form id="bookingForm">
+          <input type="text" id="name" placeholder="Full Name" required>
+          <input type="tel" id="phone" placeholder="Phone Number" required>
+          <input type="text" id="address" placeholder="Address" required>
+
+          <select id="service" required>
+            <option value="">Select Service</option>
+            <option>Physiotherapy</option>
+            <option>Post Surgery Rehab</option>
+            <option>Stroke Recovery</option>
+            <option>Back Pain Treatment</option>
+          </select>
+
+          <input type="date" id="date" required>
+
+          <button type="submit">Book via WhatsApp</button>
+        </form>
+
+        <p class="cta">👉 Don’t delay recovery — get expert care at home today!</p>
+        <p class="success" id="successMsg">Redirecting to WhatsApp...</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS SECTION -->
+<section class="testimonials">
+  <h2>💬 Patient Testimonials</h2>
+  <p class="subtitle">Real Recovery Stories From Our Patients</p>
+
+  <div class="slider">
+
+    <!-- CARD 1 -->
+    <div class="card active">
+      <h3>🧠 Stroke Recovery</h3>
+      <p class="name">Ramesh Kumar (58)</p>
+      <p class="review">
+        “After my stroke, I couldn’t walk. With home therapy, I recovered step by step.
+        Now I can walk independently. Truly life-changing.”
+      </p>
+
+      <div class="result">
+        <p>❌ Before: Unable to walk</p>
+        <p>✅ After: Walking independently</p>
+      </div>
+
+      <div class="stars">⭐⭐⭐⭐⭐</div>
+    </div>
+
+    <!-- CARD 2 -->
+    <div class="card">
+      <h3>🦵 Knee Surgery</h3>
+      <p class="name">Lakshmi Devi (65)</p>
+      <p class="review">
+        “Post-surgery pain was severe. Home visits made recovery easy and comfortable.”
+      </p>
+
+      <div class="result">
+        <p>❌ Before: Severe pain</p>
+        <p>✅ After: Walking without support</p>
+      </div>
+
+      <div class="stars">⭐⭐⭐⭐⭐</div>
+    </div>
+
+    <!-- CARD 3 -->
+    <div class="card">
+      <h3>🏃 Sports Injury</h3>
+      <p class="name">Rahul (25)</p>
+      <p class="review">
+        “I thought I couldn’t play again. Now I’m back to sports stronger than ever.”
+      </p>
+
+      <div class="result">
+        <p>❌ Before: Couldn’t run</p>
+        <p>✅ After: Full recovery</p>
+      </div>
+
+      <div class="stars">⭐⭐⭐⭐⭐</div>
+    </div>
+
+    <!-- CARD 4 -->
+    <div class="card">
+      <h3>👵 Elderly Care</h3>
+      <p class="name">Saraswathi (72)</p>
+      <p class="review">
+        “Walking was difficult. After sessions, I feel active and confident.”
+      </p>
+
+      <div class="result">
+        <p>❌ Before: Limited mobility</p>
+        <p>✅ After: Independent movement</p>
+      </div>
+
+      <div class="stars">⭐⭐⭐⭐⭐</div>
+    </div>
+
+  </div>
+
+  <!-- DOTS -->
+  <div class="dots">
+    <span class="dot active"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+  </div>
+
+  <p class="trust-line">
+    👉 Join hundreds of happy patients who recovered faster with our expert care.
+  </p>
+</section>
+
+<!-- =========================
+     GALLERY + VIDEOS
+========================= -->
+<!-- =========================
+     GALLERY + VIDEOS (FINAL FIX)
+========================= -->
+<section class="gallery-section" id="gallery">
+
+  <h2 class="gallery-title">Our Treatments in Action</h2>
+  <p class="gallery-subtitle">Real treatments. Real results.</p>
+
+  <div class="gallery-grid">
+
+    <!-- CARD 1 -->
+    <div class="gallery-card">
+      <a href="https://www.youtube.com/watch?v=2pLT-olgUJs" target="_blank">
+        <img src="https://img.youtube.com/vi/2pLT-olgUJs/0.jpg">
+        <div class="overlay">Back Pain Exercise</div>
+      </a>
+    </div>
+
+    <!-- CARD 2 -->
+    <div class="gallery-card">
+      <a href="https://www.youtube.com/watch?v=v7AYKMP6rOE" target="_blank">
+        <img src="https://img.youtube.com/vi/v7AYKMP6rOE/0.jpg">
+        <div class="overlay">Yoga Therapy</div>
+      </a>
+    </div>
+
+    <!-- CARD 3 -->
+    <div class="gallery-card">
+      <a href="https://www.youtube.com/watch?v=UItWltVZZmE" target="_blank">
+        <img src="https://img.youtube.com/vi/UItWltVZZmE/0.jpg">
+        <div class="overlay">Knee Rehab</div>
+      </a>
+    </div>
+
+    <!-- CARD 4 -->
+    <div class="gallery-card">
+      <a href="https://www.youtube.com/watch?v=4BOTvaRaDjI" target="_blank">
+        <img src="https://img.youtube.com/vi/4BOTvaRaDjI/0.jpg">
+        <div class="overlay">Physio Session</div>
+      </a>
+    </div>
+
+    <!-- CARD 5 -->
+    <div class="gallery-card">
+      <a href="https://www.youtube.com/watch?v=8BcPHWGQO44" target="_blank">
+        <img src="https://img.youtube.com/vi/8BcPHWGQO44/0.jpg">
+        <div class="overlay">Shoulder Exercise</div>
+      </a>
+    </div>
+
+    <!-- CARD 6 -->
+    <div class="gallery-card">
+      <a href="https://www.youtube.com/watch?v=1v8Z0YqYw1k" target="_blank">
+        <img src="https://images.pexels.com/photos/20860603/pexels-photo-20860603/free-photo-of-physiotherapist-massaging-knee-and-leg.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2">
+        <div class="overlay">Full Body Rehab</div>
+      </a>
+    </div>
+
+  </div>
+
+</section>
+<!-- =========================
+     BLOG SECTION (ENHANCED)
+========================= -->
+<section class="blog-section">
+
+  <h2>Health Tips & Blogs</h2>
+  <p class="blog-subtitle">Expert advice to keep you pain-free & active</p>
+
+  <div class="blog-grid">
+
+    <!-- BLOG 1 -->
+    <div class="blog-card reveal">
+
+      <img src="https://images.pexels.com/photos/4506105/pexels-photo-4506105.jpeg" alt="Back Pain">
+
+      <div class="blog-content">
+
+        <span class="tag">Back Pain</span>
+        <span class="meta">5 min read • Jan 2026</span>
+
+        <h3>5 Exercises for Back Pain</h3>
+
+        <p>Learn simple physiotherapy exercises you can do at home to relieve lower back pain and improve flexibility.</p>
+
+        <div class="author">
+          👨‍⚕️ Dr. Priya Sharma
+        </div>
+
+        <button>Read More →</button>
+
+      </div>
+
+    </div>
+
+    <!-- BLOG 2 -->
+    <div class="blog-card reveal">
+
+      <img src="https://images.pexels.com/photos/5214958/pexels-photo-5214958.jpeg" alt="Physiotherapy">
+
+      <div class="blog-content">
+
+        <span class="tag">Awareness</span>
+        <span class="meta">4 min read • Jan 2026</span>
+
+        <h3>When to See a Physiotherapist</h3>
+
+        <p>Understand the warning signs your body gives when it needs professional physiotherapy treatment.</p>
+
+        <div class="author">
+          👨‍⚕️ Dr. Kiran Kumar
+        </div>
+
+        <button>Read More →</button>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+<!-- =========================
+     CONTACT + BOOKING (PRO)
+========================= -->
+<section class="contact-section" id="contact">
+
+  <h2>Book Your Appointment</h2>
+  <p class="subtitle">Fast, easy & instant booking via WhatsApp</p>
+
+  <div class="contact-wrapper">
+
+    <!-- ================= FORM ================= -->
+    <form id="bookingForm">
+
+      <input type="text" id="name" placeholder="Your Name" required>
+      <input type="tel" id="phone" placeholder="Phone Number" required>
+
+      <select id="service" required>
+        <option value="">Select Service</option>
+        <option>Back Pain</option>
+        <option>Stroke Rehabilitation</option>
+        <option>Sports Injury</option>
+        <option>Home Visit Physio</option>
+      </select>
+
+      <input type="date" id="date" required>
+
+      <textarea id="address" placeholder="Your Address" required></textarea>
+
+      <button type="submit">Book via WhatsApp 🚀</button>
+
+      <p id="successMsg">✅ Redirecting to WhatsApp...</p>
+
+    </form>
+
+    <!-- ================= INFO ================= -->
+    <div class="contact-info">
+
+      <h3>Contact Info</h3>
+
+      <p>📍 Location: Nellore, Andhra Pradesh</p>
+      <p>📞 Phone: +91 9876543210</p>
+      <p>🕒 Timing: 9:00 AM - 8:00 PM</p>
+      <p>🏥 Services: Home Visit • Clinic • Rehab</p>
+
+      <!-- BUTTONS -->
+      <div class="contact-buttons">
+        <a href="tel:9876543210" class="call-btn">📞 Call Now</a>
+
+        <a href="https://wa.me/919876543210" target="_blank" class="whatsapp-btn">
+          💬 Chat on WhatsApp
+        </a>
+      </div>
+
+      <!-- MAP -->
+      <iframe 
+        src="https://maps.google.com/maps?q=nellore&t=&z=13&ie=UTF8&iwloc=&output=embed">
+      </iframe>
+
+    </div>
+
+  </div>
+
+</section>
+<script>
+function toggleMenu(){
+  document.getElementById("menu").classList.toggle("active");
+}
+
+// SCROLL TEXT ANIMATION
+const aboutText = document.querySelector('.about-text');
+
+window.addEventListener('scroll', () => {
+  const position = aboutText.getBoundingClientRect().top;
+  const screenPosition = window.innerHeight / 1.2;
+
+  if(position < screenPosition){
+    aboutText.classList.add('show');
+  }
+});
+
+// ✅ SAFE PARALLAX (NO transform override)
+window.addEventListener("mousemove", (e) => {
+  const img1 = document.querySelector(".img1");
+  const img2 = document.querySelector(".img2");
+
+  let x = (window.innerWidth - e.pageX) / 100;
+  let y = (window.innerHeight - e.pageY) / 100;
+
+  // Use CSS variable instead of transform
+  img1.style.setProperty('--x', x + 'px');
+  img1.style.setProperty('--y', y + 'px');
+
+  img2.style.setProperty('--x', -x + 'px');
+  img2.style.setProperty('--y', -y + 'px');
+});
+
+// 3D TILT EFFECT
+const tilt = document.getElementById("tilt");
+
+tilt.addEventListener("mousemove", (e) => {
+  const rect = tilt.getBoundingClientRect();
+  const x = e.clientX - rect.left;
+  const y = e.clientY - rect.top;
+
+  const rotateX = -(y - rect.height / 2) / 10;
+  const rotateY = (x - rect.width / 2) / 10;
+
+  tilt.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+});
+
+tilt.addEventListener("mouseleave", () => {
+  tilt.style.transform = `rotateX(0) rotateY(0)`;
+});
+
+// SCROLL REVEAL
+const reveals = document.querySelectorAll(".reveal");
+
+window.addEventListener("scroll", () => {
+  reveals.forEach(el => {
+    const top = el.getBoundingClientRect().top;
+    if (top < window.innerHeight - 100) {
+      el.classList.add("active");
+    }
+  });
+});
+
+// PARTICLES SYSTEM
+const canvas = document.getElementById("particles");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let particles = [];
+
+for (let i = 0; i < 60; i++) {
+  particles.push({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    r: Math.random() * 2,
+    dx: Math.random() - 0.5,
+    dy: Math.random() - 0.5
+  });
+}
+
+function animate() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  particles.forEach(p => {
+    p.x += p.dx;
+    p.y += p.dy;
+
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+    ctx.fillStyle = "#6c63ff";
+    ctx.fill();
+  });
+
+  requestAnimationFrame(animate);
+}
+
+animate();
+
+const doctors = {
+  doc1:{
+    name:"Dr. Priya Sharma",
+    role:"Senior Physiotherapist",
+    img:"https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg",
+    desc:"Expert in orthopedic physiotherapy with 12+ years experience in pain management and rehabilitation."
+  },
+  doc2:{
+    name:"Dr. Kiran Kumar",
+    role:"Neuro Rehab Specialist",
+    img:"https://images.pexels.com/photos/5452293/pexels-photo-5452293.jpeg",
+    desc:"Specialist in stroke recovery, paralysis rehabilitation and neurological disorders."
+  },
+  doc3:{
+    name:"Dr. Anjali Reddy",
+    role:"Sports Injury Expert",
+    img:"https://images.pexels.com/photos/5214958/pexels-photo-5214958.jpeg",
+    desc:"Focused on sports injury recovery, muscle strengthening and performance rehab."
+  }
+};
+
+function openDoctor(id){
+  const d = doctors[id];
+
+  document.getElementById("doctorModal").style.display = "flex";
+  document.getElementById("mImg").src = d.img;
+  document.getElementById("mName").innerText = d.name;
+  document.getElementById("mRole").innerText = d.role;
+  document.getElementById("mDesc").innerText = d.desc;
+}
+
+function closeDoctor(){
+  document.getElementById("doctorModal").style.display = "none";
+}
+
+// SCROLL REVEAL
+
+
+// EXPAND EQUIPMENT LIST
+function toggleList(btn){
+  const list = btn.nextElementSibling;
+  list.classList.toggle("show");
+}
+
+// SIMPLE PARALLAX TILT
+document.querySelectorAll(".facility-card").forEach(card => {
+
+  card.addEventListener("mousemove", (e) => {
+    const rect = card.getBoundingClientRect();
+
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    const rotateX = -(y - rect.height/2) / 15;
+    const rotateY = (x - rect.width/2) / 15;
+
+    card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px)`;
+  });
+
+  card.addEventListener("mouseleave", () => {
+    card.style.transform = "translateY(0) rotateX(0) rotateY(0)";
+  });
+
+});
+
+document.getElementById("bookingForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  let name = document.getElementById("name").value;
+  let phone = document.getElementById("phone").value;
+  let address = document.getElementById("address").value;
+  let service = document.getElementById("service").value;
+  let date = document.getElementById("date").value;
+
+  // Simple validation
+  if(name === "" || phone === "" || address === "" || service === "" || date === "") {
+    alert("Please fill all fields");
+    return;
+  }
+
+  // Your WhatsApp number (change this)
+  let whatsappNumber = "91XXXXXXXXXX";
+
+  let message = `New Home Visit Booking:%0A
+Name: ${name}%0A
+Phone: ${phone}%0A
+Address: ${address}%0A
+Service: ${service}%0A
+Date: ${date}`;
+
+  let url = `https://wa.me/${whatsappNumber}?text=${message}`;
+
+  document.getElementById("successMsg").style.display = "block";
+
+  // Redirect to WhatsApp
+  window.open(url, "_blank");
+});
+
+let index = 0;
+const cards = document.querySelectorAll(".card");
+const dots = document.querySelectorAll(".dot");
+
+function showSlide(i) {
+  cards.forEach((card, idx) => {
+    card.classList.remove("active");
+    dots[idx].classList.remove("active");
+  });
+
+  cards[i].classList.add("active");
+  dots[i].classList.add("active");
+}
+
+function autoSlide() {
+  index = (index + 1) % cards.length;
+  showSlide(index);
+}
+
+setInterval(autoSlide, 4000);
+
+// DOT CLICK
+dots.forEach((dot, i) => {
+  dot.addEventListener("click", () => {
+    index = i;
+    showSlide(index);
+  });
+});
+
+document.querySelectorAll(".video").forEach(card=>{
+  const video = card.querySelector("video");
+
+  card.addEventListener("mouseenter",()=> video.play());
+  card.addEventListener("mouseleave",()=> video.pause());
+});
+
+document.getElementById("bookingForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  let name = document.getElementById("name").value;
+  let phone = document.getElementById("phone").value;
+  let service = document.getElementById("service").value;
+  let date = document.getElementById("date").value;
+  let address = document.getElementById("address").value;
+
+  if(!name || !phone || !service || !date || !address){
+    alert("Please fill all fields");
+    return;
+  }
+
+  let message = `New Appointment Booking:%0A
+Name: ${name}%0A
+Phone: ${phone}%0A
+Service: ${service}%0A
+Date: ${date}%0A
+Address: ${address}`;
+
+  let url = `https://wa.me/919876543210?text=${message}`;
+
+  document.getElementById("successMsg").style.display = "block";
+
+  window.open(url, "_blank");
+});
+</script>
+
+</body>
+</html>
