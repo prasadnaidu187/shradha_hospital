@@ -1228,7 +1228,51 @@ html {
   color:#f5a623;
   margin-top:5px;
 }
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+}
 
+.doctor-card {
+  background: #fff;
+  border-radius: 15px;
+  overflow: hidden;
+  text-align: center;
+  padding-bottom: 15px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  transition: 0.3s;
+}
+
+.doctor-card:hover {
+  transform: translateY(-8px);
+}
+
+/* 🔥 IMAGE FIX */
+.doctor-card img {
+  width: 100%;
+  height: 280px;              /* same height for all */
+  object-fit: cover;          /* crops nicely */
+  object-position: top;       /* focus on face */
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+/* TEXT */
+.doctor-card h3 {
+  margin-top: 15px;
+  font-size: 18px;
+}
+
+.doctor-card p {
+  color: #777;
+  margin: 5px 0;
+}
+
+.stars {
+  color: #f4b400;
+  font-size: 16px;
+}
 /* ================= MODAL ================= */
 
 .modal{
