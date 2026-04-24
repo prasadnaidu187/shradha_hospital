@@ -3263,37 +3263,38 @@ function animate() {
 animate();
 
 const doctors = {
-  doc1:{
-    name:"Dr. Priya Sharma",
-    role:"Senior Physiotherapist",
-    img:"https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg",
-    desc:"Expert in orthopedic physiotherapy with 12+ years experience in pain management and rehabilitation."
+  doc1: {
+    name: "Dr. D Sai Vishnu.PT",
+    role: "Senior Physiotherapist",
+    img: "images/sai.png",
+    desc: "Expert in advanced physiotherapy and rehabilitation treatments."
   },
-  doc2:{
-    name:"Dr. Kiran Kumar",
-    role:"Neuro Rehab Specialist",
-    img:"https://images.pexels.com/photos/5452293/pexels-photo-5452293.jpeg",
-    desc:"Specialist in stroke recovery, paralysis rehabilitation and neurological disorders."
+  doc2: {
+    name: "Dr. Sayed",
+    role: "Neuro Rehab Specialist",
+    img: "images/sayed.png",
+    desc: "Specialist in neurological recovery and rehabilitation care."
   },
-  doc3:{
-    name:"Dr. Anjali Reddy",
-    role:"Sports Injury Expert",
-    img:"https://images.pexels.com/photos/5214958/pexels-photo-5214958.jpeg",
-    desc:"Focused on sports injury recovery, muscle strengthening and performance rehab."
+  doc3: {
+    name: "Dr. Kurapati",
+    role: "Sports Injury Expert",
+    img: "images/kurapati.png",
+    desc: "Focused on sports injuries, pain management, and recovery."
   }
 };
 
-function openDoctor(id){
-  const d = doctors[id];
+function openDoctor(id) {
+  const doc = doctors[id];
+
+  document.getElementById("mImg").src = doc.img;
+  document.getElementById("mName").innerText = doc.name;
+  document.getElementById("mRole").innerText = doc.role;
+  document.getElementById("mDesc").innerText = doc.desc;
 
   document.getElementById("doctorModal").style.display = "flex";
-  document.getElementById("mImg").src = d.img;
-  document.getElementById("mName").innerText = d.name;
-  document.getElementById("mRole").innerText = d.role;
-  document.getElementById("mDesc").innerText = d.desc;
 }
 
-function closeDoctor(){
+function closeDoctor() {
   document.getElementById("doctorModal").style.display = "none";
 }
 
