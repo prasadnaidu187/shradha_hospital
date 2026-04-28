@@ -10,7 +10,8 @@
 <link rel="stylesheet" 
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon.png">
+<link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 
@@ -132,107 +133,56 @@ html {
   }
 }
 
+@media (max-width: 768px) {
 
+  .nav-btn {
+    display: none;
+  }
+
+  .nav-links.active::after {
+    content: "Book Appointment";
+    display: block;
+    background: #E8681A;
+    color: #fff;
+    padding: 12px 18px;
+    margin: 10px auto;
+    width: 80%;
+    text-align: center;
+    border-radius: 8px;
+  }
+}
 /* HERO SECTION */
+/* HERO WRAPPER */
 .hero {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 80px 60px;
-  min-height: 90vh;
-  background: linear-gradient(135deg,#f0fffe,#eef6ff,#f8f3ff);
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
   overflow: hidden;
-  flex-wrap: wrap;
+  position: relative;
 }
 
-/* LEFT CONTENT */
-.hero-content {
-  max-width: 480px;
-  z-index: 2;
-  transform: translateX(20px); /* slightly more visible */
-}
-
-.hero h1 {
-  font-size: 52px;
-  font-weight: 900;
-  line-height: 1.2;
-  color: #1a2340;
-}
-
-.hero span {
-  color: #3BAD4F;
-}
-
-.hero p {
-  margin: 20px 0 30px;
-  font-size: 17px;
-  color: #555;
-  line-height: 1.6;
-}
-.hero-image {
-  max-width: 600px;
+/* IMAGE (DESKTOP DEFAULT) */
+.hero img {
   width: 100%;
-  transform: translateX(-20px); /* pulls image toward text */
-}
-/* BUTTON */
-.hero-btn {
-  display: inline-block;
-  padding: 14px 30px;
-  background: linear-gradient(135deg,#ff7a2f,#E8681A);
-  color: #fff;
-  border-radius: 10px;
-  text-decoration: none;
-  font-weight: 600;
-  transition: 0.3s;
-}
-
-.hero-btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 25px rgba(232,104,26,0.3);
-}
-
-/* IMAGE */
-.hero-image {
-  max-width: 600px;
-  width: 100%;
-}
-
-.hero-image img {
-  width: 100%;
-  border-radius: 20px;
-}
-
-/* SOFT OVERLAY EFFECT */
-.hero::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 60%;
   height: 100%;
-  background: radial-gradient(circle at top right, rgba(232,104,26,0.15), transparent);
-  z-index: 1;
+  object-fit: cover;        /* fills screen on desktop */
+  object-position: center;
+  display: block;
 }
 
-/* MOBILE */
-@media(max-width:768px){
+/* MOBILE OPTIMIZATION → SHOW FULL IMAGE */
+@media (max-width: 768px) {
 
   .hero {
-    flex-direction: column;
-    padding: 60px 20px;
-    text-align: center;
+    height: auto;           /* allow full image height */
   }
 
-  .hero h1 {
-    font-size: 34px;
-  }
-
-  .hero-image {
-    margin-top: 30px;
+  .hero img {
+    width: 100%;
+    height: auto;           /* key fix */
+    object-fit: contain;    /* shows full image */
   }
 }
-
 /* about */
 .about {
   padding: 80px 60px;
@@ -1175,74 +1125,73 @@ html {
 }
 
 /* ================= TEAM SECTION ================= */
-/* ===================== TEAM SECTION ===================== */
-.team-section {
-  padding: 80px 60px;
-  background: #f7f9ff;
+
+.team-section{
+  padding:80px 60px;
+  background:#f7f9ff;
 }
 
-.team-header {
-  text-align: center;
-  margin-bottom: 40px;
+.team-header{
+  text-align:center;
+  margin-bottom:40px;
 }
 
-.team-header h2 {
-  font-size: 38px;
-  color: #1a2340;
+.team-header h2{
+  font-size:38px;
+  color:#1a2340;
 }
 
-.team-header p {
-  color: #666;
+.team-header p{
+  color:#666;
 }
 
-/* ===================== GRID ===================== */
-.team-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 25px;
+.team-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:25px;
 }
 
-/* ===================== CARD ===================== */
-.doctor-card {
-  background: #fff;
-  border-radius: 18px;
-  overflow: hidden; /* important for image */
-  text-align: center;
-  cursor: pointer;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-  transition: 0.4s;
+/* CARD */
+.doctor-card{
+  background:#fff;
+  border-radius:18px;
+  padding:15px;
+  text-align:center;
+  cursor:pointer;
+  box-shadow:0 10px 30px rgba(0,0,0,0.08);
+  transition:0.4s;
 }
 
-.doctor-card:hover {
-  transform: translateY(-10px) scale(1.03);
-  box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+.doctor-card img{
+  width:100%;
+  height:260px;
+  object-fit:cover;
+  border-radius:14px;
 }
 
-/* ===================== IMAGE FIX ===================== */
+.doctor-card:hover{
+  transform:translateY(-10px) scale(1.03);
+  box-shadow:0 20px 50px rgba(0,0,0,0.15);
+}
+
+.stars{
+  color:#f5a623;
+  margin-top:5px;
+}
 .doctor-card img {
-  width: 100%;
-  height: 280px;
-  object-fit: cover;
-  object-position: 50% 20%; /* 🔥 moves image UP */
-}
-/* ===================== TEXT ===================== */
-.doctor-card h3 {
-  margin-top: 15px;
-  font-size: 18px;
-  color: #1a2340;
-}
-
-.doctor-card p {
-  color: #777;
-  margin: 5px 0;
+    width: 100%;
+    height: 250px;          /* fixed height for all */
+    object-fit: cover;      /* crops nicely without stretching */
+    border-radius: 10px;
+}.doctor-card img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin: 15px auto;
+    display: block;
 }
 
-/* ===================== STARS ===================== */
-.stars {
-  color: #f4b400;
-  font-size: 16px;
-  margin-bottom: 10px;
-}
 /* ================= MODAL ================= */
 
 .modal{
@@ -2258,6 +2207,23 @@ iframe{
   }
 
 }
+.whatsapp-float {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #25D366;
+    color: white;
+    font-size: 24px;
+    padding: 12px 15px;
+    border-radius: 50%;
+    z-index: 1000;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    transition: 0.3s;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.1);
+}
 </style>
 </head>
 
@@ -2269,7 +2235,8 @@ iframe{
 
     <!-- LOGO -->
     <div class="logo">
-      <img src="images/logo.png">
+      <img src="images/logo1.png">
+      <img src="images/logo2.png">
       
     </div>
 
@@ -2284,7 +2251,7 @@ iframe{
 </ul>
 
     <!-- BUTTON -->
-    <a href="#" class="nav-btn">Book Appointment</a>
+    <a href="#contact" class="nav-btn">Book Appointment</a>
 
     <!-- HAMBURGER -->
     <div class="menu-toggle" onclick="toggleMenu()">☰</div>
@@ -2294,27 +2261,7 @@ iframe{
 <!---hero-->
 
 <section class="hero" id="home">
-
-  <!-- LEFT CONTENT -->
-  <div class="hero-content">
-    <h1>
-      Get Back to <br>
-      <span>Pain-Free Life</span>
-    </h1>
-
-    <p>
-      Comprehensive Physiotherapy for Healing & Mobility.
-      Expert care to help you recover faster and live better.
-    </p>
-
-    <a href="#" class="hero-btn">Book Appointment</a>
-  </div>
-
-  <!-- RIGHT IMAGE -->
-  <div class="hero-image">
-    <img src="images/hospital.jpeg" alt="Rehabilitation">
-  </div>
-
+  <img src="images/hero.png" alt="Hero Image">
 </section>
 
 <section class="about" id="about">
@@ -2353,8 +2300,9 @@ iframe{
         <li>✔ Friendly environment</li>
       </ul>
 
-      <button class="about-btn">Contact Us →</button>
-    </div>
+      <a href="#contact">
+    <button class="about-btn">Contact Us →</button>
+</a>
 
   </div>
 </section>
@@ -2372,7 +2320,6 @@ iframe{
         reduce pain, and improve your quality of life.
       </p>
 
-      <a href="#" class="service-btn">View All Services →</a>
     </div>
 
     <!-- RIGHT SIDE -->
@@ -2531,7 +2478,7 @@ iframe{
         <span>✔ Home Care</span>
       </div>
 
-      <a href="#" class="start-btn">Book Appointment →</a>
+      <a href="#contact" class="start-btn">Book Appointment →</a>
     </div>
 
     <!-- RIGHT -->
@@ -2566,7 +2513,7 @@ iframe{
     <!-- QUICK HIGHLIGHTS -->
     <div class="quick-info">
       <div>
-        <h3>5000+</h3>
+        <h3>30,000+</h3>
         <p>Patients Treated</p>
       </div>
       <div>
@@ -2591,7 +2538,7 @@ iframe{
     </h1>
 
     <p class="sub">
-      MPT, MBA • Senior Physiotherapist • Clinical Director
+      MPT, MBA • Senior Physiotherapist • Clinical Director • knee rehab -  London Shoulder Certified Tutor
     </p>
 
     <p class="desc">
@@ -2613,6 +2560,7 @@ iframe{
       <span>👐 Manual Therapy Expert</span>
       <span>💉 Dry Needling Certified</span>
       <span>🧠 NDT Trainer</span>
+      <span> 💉 Post Sergical rehab</span>
 
     </div>
 
@@ -2629,31 +2577,31 @@ iframe{
 
   <div class="team-grid">
 
-    <!-- Doctor 1 -->
     <div class="doctor-card" onclick="openDoctor('doc1')">
-      <img src="images/sai.png" alt="Dr Sai Vishnu">
-      <h3>Dr. D Sai Vishnu.PT</h3>
+      <img src="images/sai.png">
+      <h3>Dr. D sai Vishnu.PT</h3>
       <p>Senior Physiotherapist</p>
       <div class="stars">⭐⭐⭐⭐⭐</div>
     </div>
 
-    <!-- Doctor 2 -->
     <div class="doctor-card" onclick="openDoctor('doc2')">
-      <img src="images/sayed.png" alt="Dr Sayed">
-      <h3>Dr. Sayed</h3>
+      <img src="images/sayed.png">
+      <h3>Dr.Syed. jannathul firdous.PT</h3>
       <p>Neuro Rehab Specialist</p>
       <div class="stars">⭐⭐⭐⭐⭐</div>
     </div>
 
-    <!-- Doctor 3 -->
     <div class="doctor-card" onclick="openDoctor('doc3')">
-      <img src="images/kurapati.png" alt="Dr Kurapati">
-      <h3>Dr. Kurapati</h3>
+      <img src="images/kurapati.png">
+      <h3>Dr.kurapati munuswami.PT</h3>
       <p>Sports Injury Expert</p>
       <div class="stars">⭐⭐⭐⭐⭐</div>
     </div>
 
-   
+
+    
+
+  </div>
 </section>
 
 <!-- ===================== MODAL ===================== -->
@@ -2828,7 +2776,7 @@ iframe{
 </section>
 
 <!-- TESTIMONIALS SECTION -->
-<section class="testimonials">
+<section class="testimonials" id="testimonials">
   <h2>💬 Patient Testimonials</h2>
   <p class="subtitle">Real Recovery Stories From Our Patients</p>
 
@@ -3006,8 +2954,9 @@ iframe{
           👨‍⚕️ Dr. Priya Sharma
         </div>
 
-        <button>Read More →</button>
-
+<a href="#contact">
+    <button>Contact →</button>
+</a>
       </div>
 
     </div>
@@ -3030,8 +2979,9 @@ iframe{
           👨‍⚕️ Dr. Kiran Kumar
         </div>
 
-        <button>Read More →</button>
-
+<a href="#contact">
+    <button>Contact →</button>
+</a>
       </div>
 
     </div>
@@ -3084,17 +3034,22 @@ iframe{
 
       <!-- BUTTONS -->
       <div class="contact-buttons">
-        <a href="tel:9876543210" class="call-btn">📞 Call Now</a>
+        <a href="9153915337" class="call-btn">📞 Call Now</a>
 
-        <a href="https://wa.me/919876543210" target="_blank" class="whatsapp-btn">
+        <a href="https://wa.me/919153915337" target="_blank" class="whatsapp-btn">
           💬 Chat on WhatsApp
         </a>
       </div>
 
       <!-- MAP -->
       <iframe 
-        src="https://maps.google.com/maps?q=nellore&t=&z=13&ie=UTF8&iwloc=&output=embed">
-      </iframe>
+  src="https://www.google.com/maps?q=SSVIMS+College+of+Physiotherapy,+Nellore&output=embed"
+  width="100%" 
+  height="350" 
+  style="border:0;" 
+  allowfullscreen="" 
+  loading="lazy">
+</iframe>
 
     </div>
 
@@ -3102,6 +3057,10 @@ iframe{
 
 </section>
 
+
+<a href="https://wa.me/919153915337" target="_blank" class="whatsapp-float">
+    <i class="fab fa-whatsapp"></i>
+</a>
 <!-- =========================
      FOOTER SECTION
 ========================= -->
@@ -3164,8 +3123,6 @@ iframe{
       <p><i class="fas fa-phone"></i> +91 9876543210</p>
       <p><i class="fas fa-clock"></i> 9:00 AM - 8:00 PM</p>
 
-      <a href="tel:9876543210" class="call-btn">📞 Call Now</a>
-      <a href="https://wa.me/919876543210" class="whatsapp-btn">💬 WhatsApp</a>
     </div>
 
   </div>
@@ -3277,38 +3234,37 @@ function animate() {
 animate();
 
 const doctors = {
-  doc1: {
-    name: "Dr. D Sai Vishnu.PT",
-    role: "Senior Physiotherapist",
-    img: "images/sai.png",
-    desc: "Expert in advanced physiotherapy and rehabilitation treatments."
+  doc1:{
+    name:"Dr. D Sai Vishnu.PT",
+    role:"Senior Physiotherapist",
+    img:"images/sai.png",
+    desc:"Expert in orthopedic physiotherapy with 12+ years experience in pain management and rehabilitation."
   },
-  doc2: {
-    name: "Dr. Sayed",
-    role: "Neuro Rehab Specialist",
-    img: "images/sayed.png",
-    desc: "Specialist in neurological recovery and rehabilitation care."
+  doc2:{
+    name:"Dr. Syed Jannathul Firdous.PT",
+    role:"Neuro Rehab Specialist",
+    img:"images/sayed.png",
+    desc:"Specialist in stroke recovery, paralysis rehabilitation and neurological disorders."
   },
-  doc3: {
-    name: "Dr. Kurapati",
-    role: "Sports Injury Expert",
-    img: "images/kurapati.png",
-    desc: "Focused on sports injuries, pain management, and recovery."
+  doc3:{
+    name:"Dr. Kurapati Munuswami.PT",
+    role:"Sports Injury Expert",
+    img:"images/kurapati.png",
+    desc:"Focused on sports injury recovery, muscle strengthening and performance rehab."
   }
 };
 
-function openDoctor(id) {
-  const doc = doctors[id];
-
-  document.getElementById("mImg").src = doc.img;
-  document.getElementById("mName").innerText = doc.name;
-  document.getElementById("mRole").innerText = doc.role;
-  document.getElementById("mDesc").innerText = doc.desc;
+function openDoctor(id){
+  const d = doctors[id];
 
   document.getElementById("doctorModal").style.display = "flex";
+  document.getElementById("mImg").src = d.img;
+  document.getElementById("mName").innerText = d.name;
+  document.getElementById("mRole").innerText = d.role;
+  document.getElementById("mDesc").innerText = d.desc;
 }
 
-function closeDoctor() {
+function closeDoctor(){
   document.getElementById("doctorModal").style.display = "none";
 }
 
